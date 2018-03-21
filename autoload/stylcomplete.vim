@@ -47,7 +47,7 @@ fun! stylcomplete#CompleteStyl(findstart, base)
     return res
 
   " Complete !important and !optional
-  elseif b:start == '!' && b:word_break == 1 && b:first_word_type == 'stylusProperty'
+  elseif b:start == '!' && b:first_word_type == 'stylusProperty'
     let values = ["important", "optional"]
 
     let res = []
@@ -59,7 +59,7 @@ fun! stylcomplete#CompleteStyl(findstart, base)
     return res
 
   " Complete values
-  elseif b:start =~ '\w' && b:word_break == 1 && b:first_word_type == 'stylusProperty'
+  elseif b:first_word_type == 'stylusProperty'
     let prop = matchstr(b:line, '\(^\s\+\)\@<=\<\(\w\|-\)\+\>')
     let res = []
 
@@ -539,7 +539,7 @@ fun! stylcomplete#CompleteStyl(findstart, base)
 
   " Complete @-rules
 
-  elseif b:start =~ '\w' && b:word_break == 1 && b:first_word_type == 'stylusAtRuleMedia'
+  elseif b:first_word_type == 'stylusAtRuleMedia'
 
     let values = ["min-width", "min-height", "max-width", "max-height"]
 
